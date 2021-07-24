@@ -22,4 +22,7 @@ export class AppComponent {
     boton.click();
   }
 
+  public guardarUsuario(): void{
+
+  }
 }
