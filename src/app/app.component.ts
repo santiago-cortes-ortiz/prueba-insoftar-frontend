@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Usuario} from "./usuario";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'prueba-users';
+
+  public mostrarFormulario(usuario: Usuario, modo: string): void{
+
+  }
+
 }
