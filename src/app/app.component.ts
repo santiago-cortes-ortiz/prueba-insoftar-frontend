@@ -10,7 +10,16 @@ export class AppComponent {
   title = 'prueba-users';
 
   public mostrarFormulario(usuario: Usuario, modo: string): void{
-
+    const contenedor = document.getElementById('main-container');
+    const boton = document.createElement('button');
+    boton.type = 'button';
+    boton.style.display = 'none';
+    boton.setAttribute('data-bs-toggle','modal');
+    if (modo === 'agregar'){
+      boton.setAttribute('data-bs-target', '#agregarUsuario');
+    }
+    contenedor.appendChild(boton);
+    boton.click();
   }
 
 }
