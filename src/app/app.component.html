@@ -63,3 +63,44 @@
     </div>
   </div>
 </div>
+<!--- editUser --->
+<!-- Modal -->
+<div class="modal fade" id="modificarUsuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modificar Usuario</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #formularioEditar="ngForm" (ngSubmit)="actualizarUsuario(formularioEditar)">
+          <div class="mb-3">
+            <label for="idUsuario" class="form-label">Id</label>
+            <input type="text" ngModel="{{usuarioModificar.id}}" name="id" class="form-control" id="idUsuario"  readonly required>
+          </div>
+          <div class="mb-3">
+            <label for="nombres" class="form-label">Nombres</label>
+            <input type="text" ngModel="{{usuarioModificar.nombres}}" name="nombres" class="form-control" id="nombreEditar"  placeholder="escribe tu nombre..." required>
+          </div>
+          <div class="mb-3">
+            <label for="apeliidos" class="form-label">Apellidos</label>
+            <input type="email" ngModel="{{usuarioModificar.apellidos}}" name="apellidos" class="form-control" id="apellidoEditar"  placeholder="escribe tu apellido..."  required>
+          </div>
+          <div class="mb-3">
+            <label for="cedula" class="form-label">Numero de cedula</label>
+            <input type="number" ngModel="{{usuarioModificar.cedula}}" name="cedula" class="form-control" id="cedulaEditar"  placeholder="escribe tu cedula..."  required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Correo electronico</label>
+            <input type="email" ngModel="{{usuarioModificar.correo}}" name="correo" class="form-control" id="emailEditar"  placeholder="name@example.com"  required>
+          </div>
+          <div class="mb-3">
+            <label for="telefono" class="form-label">Telefono</label>
+            <input type="number" ngModel="{{usuarioModificar.telefono}}" name="telefono" class="form-control" id="telefonoEditar"  placeholder="numero de telefono..." required>
+          </div>
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Modificar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

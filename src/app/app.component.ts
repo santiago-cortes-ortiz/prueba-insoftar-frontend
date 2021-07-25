@@ -65,5 +65,17 @@ export class AppComponent {
     )
   }
 
+  public actualizarUsuario(formularioEditar: NgForm): void{
+    this.servicioUsuarios.actualizarUsuario(formularioEditar.value).subscribe(
+      (respuesta: Usuario) => {
+        console.log(respuesta);
+        this.obtenerUsuarios();
+        formularioEditar.reset();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message)
+      }
+    );
+  }
 
 }

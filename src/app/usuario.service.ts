@@ -22,4 +22,8 @@ export class UsuarioService {
     return this.http.post<Usuario>(`${this.apiPruebaBackend}/usuarios`, usuario);
   }
 
+  public actualizarUsuario(usuario: Usuario): Observable<Usuario>{
+    return this.http.put<Usuario>(`${this.apiPruebaBackend}/usuarios`, usuario);
+  }
+
 }
