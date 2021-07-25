@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {Usuario} from "./usuario";
 import {UsuarioService} from "./usuario.service";
 import {HttpErrorResponse} from "@angular/common/http";
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-root',
@@ -9,8 +10,6 @@ import {HttpErrorResponse} from "@angular/common/http";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
-  title = 'prueba-users';
 
   public usuarios: Usuario[] = [];
 
@@ -46,8 +45,18 @@ export class AppComponent {
     );
   }
 
-  public guardarUsuario(): void{
-
+  public guardarUsuario(formulario: NgForm): void{
+    this.servicioUsuarios.guardarUsuario(formulario.value).subscribe(
+      (respuesta: Usuario) => {
+        console.log(respuesta);
+        this.obtenerUsuarios();
+        formulario.reset();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message)
+        formulario.reset();
+      }
+    )
   }
 
 

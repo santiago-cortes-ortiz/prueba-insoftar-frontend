@@ -36,7 +36,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form #formulario="ngForm" (ngSubmit)="guardarUsuario()">
+        <form #formulario="ngForm" (ngSubmit)="guardarUsuario(formulario)">
           <div class="mb-3">
             <label for="nombres" class="form-label">Nombres</label>
             <input type="text" ngModel name="nombres" class="form-control" id="nombres"  placeholder="escribe tu nombre..." required>
