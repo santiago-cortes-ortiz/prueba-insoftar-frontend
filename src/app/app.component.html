@@ -15,12 +15,12 @@
 </nav>
 <div class="container-fluid margin-container" id="main-container">
   <div class="d-flex flex-wrap justify-content-center border-top">
-    <div class="card" style="width: 18rem;">
+    <div *ngFor="let usuario of usuarios " class="card" style="width: 18rem;">
       <div class="card-body">
-        <h5 class="card-title">Jeisson Cortes</h5>
-        <p class="card-text">Cedula: 413535135</p>
-        <p class="card-text">Correo: jeisson@gmail.com</p>
-        <p class="card-text">telefono: 3012314114</p>
+        <h5 class="card-title">{{usuario.nombres}} {{usuario.apellidos}}</h5>
+        <p class="card-text">Cedula: {{usuario.cedula}}</p>
+        <p class="card-text">Correo: {{usuario.correo}}</p>
+        <p class="card-text">telefono: {{usuario.telefono}}</p>
         <a href="#" class="btn btn-primary">Modificar</a>
       </div>
     </div>
@@ -43,24 +43,21 @@
           </div>
           <div class="mb-3">
             <label for="apeliidos" class="form-label">Apellidos</label>
-            <input type="email" ngModel name="apellidos" class="form-control" id="apeliidos"  placeholder="escribe tu apellido...">
+            <input type="email" ngModel name="apellidos" class="form-control" id="apeliidos"  placeholder="escribe tu apellido..." required>
           </div>
           <div class="mb-3">
             <label for="cedula" class="form-label">Numero de cedula</label>
-            <input type="number" ngModel name="cedula" class="form-control" id="cedula"  placeholder="escribe tu cedula...">
+            <input type="number" ngModel name="cedula" class="form-control" id="cedula"  placeholder="escribe tu cedula..." required>
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Correo electronico</label>
-            <input type="email" ngModel name="correo" class="form-control" id="email"  placeholder="name@example.com">
+            <input type="email" ngModel name="correo" class="form-control" id="email"  placeholder="name@example.com" required>
           </div>
           <div class="mb-3">
             <label for="telefono" class="form-label">Telefono</label>
-            <input type="number" ngModel name="telefono" class="form-control" id="telefono"  placeholder="numero de telefono...">
+            <input type="number" ngModel name="telefono" class="form-control" id="telefono"  placeholder="numero de telefono..." required>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button [disabled]="formulario.invalid" type="submit" class="btn btn-primary">Guardar</button>
-          </div>
+          <button [disabled]="formulario.invalid" type="submit" class="btn btn-primary">Guardar</button>
         </form>
       </div>
     </div>

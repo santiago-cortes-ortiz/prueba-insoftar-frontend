@@ -17,4 +17,9 @@ export class UsuarioService {
   public listarUsuarios(): Observable<Usuario[]>{
     return this.http.get<Usuario[]>(`${this.apiPruebaBackend}/usuarios`);
   }
+
+  public guardarUsuario(usuario: Usuario): Observable<Usuario>{
+    return this.http.post<Usuario>(`${this.apiPruebaBackend}/usuarios`, usuario);
+  }
+
 }
