@@ -13,6 +13,8 @@ export class AppComponent {
 
   public usuarios: Usuario[] = [];
 
+  public usuarioModificar: Usuario = null;
+
   constructor(private servicioUsuarios: UsuarioService) {
 
   }
@@ -29,6 +31,10 @@ export class AppComponent {
     boton.setAttribute('data-bs-toggle','modal');
     if (modo === 'agregar'){
       boton.setAttribute('data-bs-target', '#agregarUsuario');
+    }
+    if (modo === 'modificar'){
+      this.usuarioModificar = usuario;
+      boton.setAttribute('data-bs-target', '#modificarUsuario');
     }
     contenedor.appendChild(boton);
     boton.click();

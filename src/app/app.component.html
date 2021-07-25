@@ -21,7 +21,7 @@
         <p class="card-text">Cedula: {{usuario.cedula}}</p>
         <p class="card-text">Correo: {{usuario.correo}}</p>
         <p class="card-text">telefono: {{usuario.telefono}}</p>
-        <a href="#" class="btn btn-primary">Modificar</a>
+        <a href="#" (click)="mostrarFormulario(usuario,'modificar')" class="btn btn-primary">Modificar</a>
       </div>
     </div>
   </div>
