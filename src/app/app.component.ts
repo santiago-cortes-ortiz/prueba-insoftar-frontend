@@ -63,6 +63,7 @@ export class AppComponent {
         formulario.reset();
       }
     )
+    formulario.reset();
   }
 
   public actualizarUsuario(formularioEditar: NgForm): void{
@@ -73,6 +74,7 @@ export class AppComponent {
       },
       (error: HttpErrorResponse) => {
         alert(error.message)
+        formularioEditar.reset();
       }
     );
   }

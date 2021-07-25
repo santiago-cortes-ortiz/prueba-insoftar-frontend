@@ -39,19 +39,23 @@
         <form #formulario="ngForm" (ngSubmit)="guardarUsuario(formulario)">
           <div class="mb-3">
             <label for="nombres" class="form-label">Nombres</label>
-            <input type="text" ngModel name="nombres" class="form-control" id="nombres"  placeholder="escribe tu nombre..." required>
+            <input type="text" ngModel name="nombres" class="form-control" id="nombres"  placeholder="escribe tu nombre..." pattern="[a-zA-Z ]*" required>
+
           </div>
           <div class="mb-3">
             <label for="apeliidos" class="form-label">Apellidos</label>
             <input type="email" ngModel name="apellidos" class="form-control" id="apeliidos"  placeholder="escribe tu apellido..." required>
+
           </div>
           <div class="mb-3">
             <label for="cedula" class="form-label">Numero de cedula</label>
             <input type="number" ngModel name="cedula" class="form-control" id="cedula"  placeholder="escribe tu cedula..." required>
+
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Correo electronico</label>
             <input type="email" ngModel name="correo" class="form-control" id="email"  placeholder="name@example.com" required>
+
           </div>
           <div class="mb-3">
             <label for="telefono" class="form-label">Telefono</label>
@@ -69,7 +73,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Modificar Usuario</h5>
+        <h5 class="modal-title">Modificar usuario</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -77,10 +81,11 @@
           <div class="mb-3">
             <label for="idUsuario" class="form-label">Id</label>
             <input type="text" ngModel="{{usuarioModificar?.id}}" name="id" class="form-control" id="idUsuario"  readonly required>
+
           </div>
           <div class="mb-3">
             <label for="nombres" class="form-label">Nombres</label>
-            <input type="text" ngModel="{{usuarioModificar?.nombres}}" name="nombres" class="form-control" id="nombreEditar"  placeholder="escribe tu nombre..." required>
+            <input type="text" ngModel="{{usuarioModificar?.nombres}}" name="nombres" class="form-control" id="nombreEditar"  placeholder="escribe tu nombre..."  required>
           </div>
           <div class="mb-3">
             <label for="apeliidos" class="form-label">Apellidos</label>
@@ -98,7 +103,7 @@
             <label for="telefono" class="form-label">Telefono</label>
             <input type="number" ngModel="{{usuarioModificar?.telefono}}" name="telefono" class="form-control" id="telefonoEditar"  placeholder="numero de telefono..." required>
           </div>
-          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Modificar</button>
+          <button [disabled]="formularioEditar.invalid"  type="submit" class="btn btn-primary" data-bs-dismiss="modal">Modificar</button>
         </form>
       </div>
     </div>
