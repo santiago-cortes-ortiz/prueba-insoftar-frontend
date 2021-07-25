@@ -54,9 +54,9 @@ export class AppComponent {
   public guardarUsuario(formulario: NgForm): void{
     this.servicioUsuarios.guardarUsuario(formulario.value).subscribe(
       (respuesta: Usuario) => {
+        formulario.reset();
         console.log(respuesta);
         this.obtenerUsuarios();
-        formulario.reset();
       },
       (error: HttpErrorResponse) => {
         alert(error.message)
@@ -70,7 +70,6 @@ export class AppComponent {
       (respuesta: Usuario) => {
         console.log(respuesta);
         this.obtenerUsuarios();
-        formularioEditar.reset();
       },
       (error: HttpErrorResponse) => {
         alert(error.message)
