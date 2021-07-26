@@ -64,11 +64,11 @@
             <input #email="ngModel" type="email" ngModel name="correo" class="form-control" id="email"  placeholder="name@example.com" required email>
             <div *ngIf="email.invalid"  style="color: #ff9900; font-size: 80%">
               verifica que el email sea tipo email
-            </div>d
+            </div>
           </div>
           <div class="mb-3">
             <label for="telefono" class="form-label">Telefono</label>
-            <input #telefono="ngModel" type="number" ngModel name="telefono" class="form-control" id="telefono"  placeholder="numero de telefono..." minlength="10" pattern="[0-9]*" required>
+            <input #telefono="ngModel" type="text" ngModel name="telefono" class="form-control" id="telefono"  placeholder="numero de telefono..."  minlength="10" pattern="[0-9]*" required>
             <div *ngIf="telefono.invalid"  style="color: #ff9900; font-size: 80%">
               digite minimo 10 numeros y no coloque letras
             </div>
@@ -92,28 +92,46 @@
         <form #formularioEditar="ngForm" (ngSubmit)="actualizarUsuario(formularioEditar)">
           <div class="mb-3">
             <label for="idUsuario" class="form-label">Id</label>
-            <input type="text" ngModel="{{usuarioModificar?.id}}" name="id" class="form-control" id="idUsuario"  readonly required>
+            <input  type="text"  ngModel="{{usuarioModificar?.id}}" name="id" class="form-control" id="idUsuario"  readonly required>
 
           </div>
           <div class="mb-3">
             <label for="nombres" class="form-label">Nombres</label>
-            <input type="text" ngModel="{{usuarioModificar?.nombres}}" name="nombres" class="form-control" id="nombreEditar"  placeholder="escribe tu nombre..."  required>
+            <input #nombresModificar="ngModel" type="text" ngModel="{{usuarioModificar?.nombres}}" name="nombres" class="form-control" id="nombreEditar"  placeholder="escribe tu nombre..."  required>
+            <div *ngIf="nombresModificar.errors?.required" style="color: #ff9900; font-size: 80%">
+              el campo no debe estar vacio
+            </div>
           </div>
           <div class="mb-3">
             <label for="apeliidos" class="form-label">Apellidos</label>
-            <input type="email" ngModel="{{usuarioModificar?.apellidos}}" name="apellidos" class="form-control" id="apellidoEditar"  placeholder="escribe tu apellido..."  required>
+            <input #apellidosModificar="ngModel" type="email" ngModel="{{usuarioModificar?.apellidos}}" name="apellidos" class="form-control" id="apellidoEditar"  placeholder="escribe tu apellido..."  required>
+            <div *ngIf="apellidosModificar.errors?.required" style="color: #ff9900; font-size: 80%">
+              el campo no debe estar vacio
+            </div>
           </div>
           <div class="mb-3">
             <label for="cedula" class="form-label">Numero de cedula</label>
-            <input type="number" ngModel="{{usuarioModificar?.cedula}}" name="cedula" class="form-control" id="cedulaEditar"  placeholder="escribe tu cedula..."  required>
+            <input #cedulaModificar="ngModel" type="number" ngModel="{{usuarioModificar?.cedula}}" name="cedula" class="form-control" id="cedulaEditar"  placeholder="escribe tu cedula..."  required>
+            <div *ngIf="cedulaModificar.errors?.required" style="color: #ff9900; font-size: 80%">
+              el campo no debe estar vacio
+            </div>
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Correo electronico</label>
-            <input type="email" ngModel="{{usuarioModificar?.correo}}" name="correo" class="form-control" id="emailEditar"  placeholder="name@example.com"  required>
+            <input #correoModificar="ngModel" type="email" ngModel="{{usuarioModificar?.correo}}" name="correo" class="form-control" id="emailEditar"  placeholder="name@example.com"  required>
+            <div *ngIf="correoModificar.errors?.required" style="color: #ff9900; font-size: 80%">
+              el campo no debe estar vacio
+            </div>
           </div>
           <div class="mb-3">
             <label for="telefono" class="form-label">Telefono</label>
-            <input type="number" ngModel="{{usuarioModificar?.telefono}}" name="telefono" class="form-control" id="telefonoEditar"  placeholder="numero de telefono..." required>
+            <input #telefonoModificar="ngModel" type="text" ngModel="{{usuarioModificar?.telefono}}" name="telefono" class="form-control" id="telefonoEditar" minlength="10" pattern="[0-9]*"  placeholder="numero de telefono..." required>
+            <div *ngIf="telefonoModificar.errors?.required" style="color: #ff9900; font-size: 80%">
+              el campo no debe estar vacio
+            </div>
+            <div *ngIf="telefonoModificar.errors?.minlength" style="color: #ff9900; font-size: 80%">
+              digite minimo 10 numeros
+            </div>
           </div>
           <button [disabled]="formularioEditar.invalid"  type="submit" class="btn btn-primary" data-bs-dismiss="modal">Modificar</button>
         </form>
