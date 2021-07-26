@@ -15,7 +15,7 @@
 </nav>
 <div class="container-fluid margin-container" id="main-container">
   <div class="d-flex flex-wrap justify-content-center border-top">
-    <div *ngFor="let usuario of usuarios " class="card" style="width: 18rem;">
+    <div *ngFor="let usuario of usuarios " class="card m-2" style="width: 18rem;">
       <div class="card-body">
         <h5 class="card-title">{{usuario.nombres}} {{usuario.apellidos}}</h5>
         <p class="card-text">Cedula: {{usuario.cedula}}</p>
@@ -40,6 +40,9 @@
           <div class="mb-3">
             <label for="nombres" class="form-label">Nombres</label>
             <input #nombres="ngModel" type="text" ngModel name="nombres" class="form-control" id="nombres"   placeholder="escribe tu nombre..." pattern="[a-zA-Z ]*" required>
+            <div *ngIf="nombres.errors?.required" style="color: #ff9900; font-size: 80%">
+              el campo no debe estar vacio
+            </div>
             <div *ngIf="nombres.invalid" style="color: #ff9900; font-size: 80%">
               verifica que no hallan numeros
             </div>
@@ -48,6 +51,9 @@
             <label for="apeliidos" class="form-label">Apellidos</label>
             <input
               #apellidos="ngModel" type="email" ngModel name="apellidos" class="form-control" id="apeliidos"  placeholder="escribe tu apellido..." pattern="[a-zA-Z ]*" required>
+            <div *ngIf="apellidos.errors?.required" style="color: #ff9900; font-size: 80%">
+              el campo no debe estar vacio
+            </div>
             <div *ngIf="apellidos.invalid" style="color: #ff9900; font-size: 80%">
               verifica que no hallan numeros
             </div>
