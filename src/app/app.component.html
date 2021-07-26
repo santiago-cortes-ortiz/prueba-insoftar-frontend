@@ -39,27 +39,39 @@
         <form #formulario="ngForm" (ngSubmit)="guardarUsuario(formulario)">
           <div class="mb-3">
             <label for="nombres" class="form-label">Nombres</label>
-            <input type="text" ngModel name="nombres" class="form-control" id="nombres"  placeholder="escribe tu nombre..." pattern="[a-zA-Z ]*" required>
-
+            <input #nombres="ngModel" type="text" ngModel name="nombres" class="form-control" id="nombres"   placeholder="escribe tu nombre..." pattern="[a-zA-Z ]*" required>
+            <div *ngIf="nombres.invalid" style="color: #ff9900; font-size: 80%">
+              verifica que no hallan numeros
+            </div>
           </div>
           <div class="mb-3">
             <label for="apeliidos" class="form-label">Apellidos</label>
-            <input type="email" ngModel name="apellidos" class="form-control" id="apeliidos"  placeholder="escribe tu apellido..." required>
-
+            <input
+              #apellidos="ngModel" type="email" ngModel name="apellidos" class="form-control" id="apeliidos"  placeholder="escribe tu apellido..." pattern="[a-zA-Z ]*" required>
+            <div *ngIf="apellidos.invalid" style="color: #ff9900; font-size: 80%">
+              verifica que no hallan numeros
+            </div>
           </div>
           <div class="mb-3">
             <label for="cedula" class="form-label">Numero de cedula</label>
-            <input type="number" ngModel name="cedula" class="form-control" id="cedula"  placeholder="escribe tu cedula..." required>
-
+            <input #cedula="ngModel" type="number" ngModel name="cedula" class="form-control" id="cedula"  placeholder="escribe tu cedula..." pattern="[0-9]*" required>
+            <div *ngIf="cedula.invalid"  style="color: #ff9900; font-size: 80%">
+              verifica que no hallan letras
+            </div>
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Correo electronico</label>
-            <input type="email" ngModel name="correo" class="form-control" id="email"  placeholder="name@example.com" required>
-
+            <input #email="ngModel" type="email" ngModel name="correo" class="form-control" id="email"  placeholder="name@example.com" required email>
+            <div *ngIf="email.invalid"  style="color: #ff9900; font-size: 80%">
+              verifica que el email sea tipo email
+            </div>d
           </div>
           <div class="mb-3">
             <label for="telefono" class="form-label">Telefono</label>
-            <input type="number" ngModel name="telefono" class="form-control" id="telefono"  placeholder="numero de telefono..." required>
+            <input #telefono="ngModel" type="number" ngModel name="telefono" class="form-control" id="telefono"  placeholder="numero de telefono..." minlength="10" pattern="[0-9]*" required>
+            <div *ngIf="telefono.invalid"  style="color: #ff9900; font-size: 80%">
+              digite minimo 10 numeros y no coloque letras
+            </div>
           </div>
           <button [disabled]="formulario.invalid" type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
         </form>
