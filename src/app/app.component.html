@@ -76,13 +76,19 @@
           <div class="mb-3">
             <label for="cedula" class="form-label">Numero de cedula</label>
             <input #cedula="ngModel" type="number" ngModel name="cedula" class="form-control" id="cedula"  placeholder="escribe tu cedula..." pattern="[0-9]*" required>
+            <div *ngIf="cedula.errors?.required"  style="color: #ff9900; font-size: 80%">
+              el campo no debe estar vacio
+            </div>
             <div *ngIf="cedula.invalid"  style="color: #ff9900; font-size: 80%">
-              verifica que no hallan letras
+              verifique que no hallan letras
             </div>
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Correo electronico</label>
             <input #email="ngModel" type="email" ngModel name="correo" class="form-control" id="email"  placeholder="name@example.com" required email>
+            <div *ngIf="email.errors?.required"  style="color: #ff9900; font-size: 80%">
+              el campo no debe estar vacio
+            </div>
             <div *ngIf="email.invalid"  style="color: #ff9900; font-size: 80%">
               verifica que el email sea tipo email
             </div>
@@ -90,6 +96,9 @@
           <div class="mb-3">
             <label for="telefono" class="form-label">Telefono</label>
             <input #telefono="ngModel" type="text" ngModel name="telefono" class="form-control" id="telefono"  placeholder="numero de telefono..."  minlength="10" pattern="[0-9]*" required>
+            <div *ngIf="telefono.errors?.required"  style="color: #ff9900; font-size: 80%">
+              el campo no debe estar vacio
+            </div>
             <div *ngIf="telefono.invalid"  style="color: #ff9900; font-size: 80%">
               digite minimo 10 numeros y no coloque letras
             </div>
