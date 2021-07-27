@@ -15,15 +15,30 @@
 </nav>
 <div class="container-fluid margin-container" id="main-container">
   <div class="d-flex flex-wrap justify-content-center border-top">
-    <div *ngFor="let usuario of usuarios " class="card m-2" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">{{usuario.nombres}} {{usuario.apellidos}}</h5>
-        <p class="card-text">Cedula: {{usuario.cedula}}</p>
-        <p class="card-text">Correo: {{usuario.correo}}</p>
-        <p class="card-text">telefono: {{usuario.telefono}}</p>
-        <a href="#" (click)="mostrarFormulario(usuario,'modificar')" class="btn btn-primary">Modificar</a>
-      </div>
-    </div>
+    <table class="table table-dark table-striped">
+      <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nombres</th>
+        <th scope="col">Apellidos</th>
+        <th scope="col">Cedula</th>
+        <th scope="col">Correo</th>
+        <th scope="col">Telefono</th>
+        <th scope="col">Accion</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let usuario of usuarios">
+        <th scope="row">{{usuario.id}}</th>
+        <td>{{usuario.nombres}}</td>
+        <td>{{usuario.apellidos}}</td>
+        <td>{{usuario.cedula}}</td>
+        <td>{{usuario.correo}}</td>
+        <td>{{usuario.telefono}}</td>
+        <td><a href="#" (click)="mostrarFormulario(usuario,'modificar')" class="btn btn-light">Modificar</a></td>
+      </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 <!--add user-->
@@ -79,7 +94,7 @@
               digite minimo 10 numeros y no coloque letras
             </div>
           </div>
-          <button [disabled]="formulario.invalid" type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+          <button [disabled]="formulario.invalid" type="submit" class="btn btn-dark" data-bs-dismiss="modal">Guardar</button>
         </form>
       </div>
     </div>
@@ -103,16 +118,22 @@
           </div>
           <div class="mb-3">
             <label for="nombres" class="form-label">Nombres</label>
-            <input #nombresModificar="ngModel" type="text" ngModel="{{usuarioModificar?.nombres}}" name="nombres" class="form-control" id="nombreEditar"  placeholder="escribe tu nombre..."  required>
+            <input #nombresModificar="ngModel" type="text" ngModel="{{usuarioModificar?.nombres}}" name="nombres" class="form-control" id="nombreEditar" pattern="[a-zA-Z ]*"  placeholder="escribe tu nombre..."  required>
             <div *ngIf="nombresModificar.errors?.required" style="color: #ff9900; font-size: 80%">
               el campo no debe estar vacio
+            </div>
+            <div *ngIf="nombresModificar.invalid" style="color: #ff9900; font-size: 80%">
+              verifica que no hallan numeros
             </div>
           </div>
           <div class="mb-3">
             <label for="apeliidos" class="form-label">Apellidos</label>
-            <input #apellidosModificar="ngModel" type="email" ngModel="{{usuarioModificar?.apellidos}}" name="apellidos" class="form-control" id="apellidoEditar"  placeholder="escribe tu apellido..."  required>
+            <input #apellidosModificar="ngModel" type="email" ngModel="{{usuarioModificar?.apellidos}}" name="apellidos" class="form-control" id="apellidoEditar" pattern="[a-zA-Z ]*"  placeholder="escribe tu apellido..."  required>
             <div *ngIf="apellidosModificar.errors?.required" style="color: #ff9900; font-size: 80%">
               el campo no debe estar vacio
+            </div>
+            <div *ngIf="apellidosModificar.invalid" style="color: #ff9900; font-size: 80%">
+              verifica que no hallan numeros
             </div>
           </div>
           <div class="mb-3">
@@ -138,8 +159,11 @@
             <div *ngIf="telefonoModificar.errors?.minlength" style="color: #ff9900; font-size: 80%">
               digite minimo 10 numeros
             </div>
+            <div *ngIf="telefonoModificar.invalid" style="color: #ff9900; font-size: 80%">
+              verifica que no hallan letras
+            </div>
           </div>
-          <button [disabled]="formularioEditar.invalid"  type="submit" class="btn btn-primary" data-bs-dismiss="modal">Modificar</button>
+          <button [disabled]="formularioEditar.invalid"  type="submit" class="btn btn-dark" data-bs-dismiss="modal">Modificar</button>
         </form>
       </div>
     </div>
